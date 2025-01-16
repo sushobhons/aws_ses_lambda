@@ -1,6 +1,6 @@
-# AWS SES Bulk Templated Email Sender using LAMBDA
+# AWS SES Bulk Templated Email Sender Using Lambda and AWS S3
 
-This repository contains a Lambda function for sending bulk templated emails using AWS Simple Email Service (SES). It splits recipient email addresses into manageable chunks and sends emails in batches using SES's bulk email feature.
+This repository contains a Lambda function for sending bulk templated emails using AWS Simple Email Service (SES). It includes functionality to dynamically fetch recipient email addresses from an S3 Excel file and send emails in manageable chunks using SES's bulk email feature.
 
 ## Features
 
@@ -8,7 +8,7 @@ This repository contains a Lambda function for sending bulk templated emails usi
 - Chunk email addresses into groups of 50 (SES limit).
 - Send bulk templated emails using AWS SES.
 - Basic error handling and logging.
-- Support for fetching email addresses from an S3 Excel file (XLSX format).
+- Support for fetching email addresses from an S3 Bucket Excel file (XLSX format).
 
 ## Prerequisites
 
