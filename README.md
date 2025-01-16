@@ -54,15 +54,15 @@ This repository contains a Lambda function for sending bulk templated emails usi
 3. Select **Python 3.x** as the runtime.
 4. For the **Execution Role**, choose the IAM role you created (e.g., `SESLambdaRole`).
 
-#### Deploy the Code:
-
-1. Copy-paste the Python code into the Lambda function's code editor.
-2. In the **Code Source** section, upload the zipped version of your Python file if preferred.
-
 #### Configure Environment Variables (Optional):
 
 - `SOURCE_EMAIL`: The source email address.
-- `TEMPLATE_NAME`: The SES template name.
+- `TEMPLATE_NAME`: The SES template name.   
+
+#### Deploy the Code:
+
+1. Copy-paste the Python code into the Lambda function's code editor.
+2. Click on the **Deploy** button and wait for deployment notification.
 
 #### Test the Lambda Function:
 
