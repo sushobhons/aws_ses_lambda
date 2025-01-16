@@ -8,6 +8,7 @@ This repository contains a Lambda function for sending bulk templated emails usi
 - Chunk email addresses into groups of 50 (SES limit).
 - Send bulk templated emails using AWS SES.
 - Basic error handling and logging.
+- Support for fetching email addresses from an S3 Excel file (XLSX format).
 
 ## Prerequisites
 
@@ -43,7 +44,8 @@ This repository contains a Lambda function for sending bulk templated emails usi
 2. Click on **Roles** in the left menu and then **Create Role**.
 3. Select **Lambda** as the use case and click **Next**.
 4. Search for and attach the policy **AmazonSESFullAccess**.
-5. Give the role a name (e.g., `SESLambdaRole`) and click **Create Role**.
+5. Attach the AmazonS3ReadOnlyAccess policy to allow Lambda to read objects from your S3 bucket.
+6. Give the role a name (e.g., `SESLambdaRole`) and click **Create Role**.
 
 ### AWS Lambda Setup
 
@@ -69,5 +71,28 @@ This repository contains a Lambda function for sending bulk templated emails usi
 1. Click on the **Test** button, give your test event a name, and provide the sample event payload (see below).
 2. Click **Save** and then **Test** again to trigger the Lambda function.
 3. Check your inbox to verify that the email has been sent successfully.
+
+#### Fetching Emails from S3:
+
+This Lambda function can fetch recipient emails from an Excel file stored in an S3 bucket. The S3_BUCKET_NAME and S3_FILE_KEY environment variables need to be set to point to your S3 bucket and file.
+
+The file should be in XLSX format and contain a column of email addresses. The Lambda function reads the emails from this file and sends the templated email to each address.
+
+The Lambda function reads the emails from this file and sends the templated email to each one.
+#### Steps to Fix Panda Issue:
+Use Lambda Layers:
+
+1. In the Lambda console, navigate to your function.
+2. Under the "Layers" section, click "Add a layer."
+3. Choose a layer either from your own layers or from the available Lambda layers in the AWS marketplace.
+
+#### Steps to Fix the Timeout Issue:
+Increase Lambda Timeout:
+
+1. Go to the AWS Lambda Console.
+2. Find and select your Lambda function.
+3. Under the Configuration tab, click on General configuration.
+4. Increase the timeout setting to a higher value (e.g., 10 or 15 seconds, depending on how long the operation takes).
+5. Click Save.
 
 ---
